@@ -728,6 +728,9 @@ crcCalc = crcpython2.CRCCCITT(version='XModem')
 
 def readWXLink(block1, block2):
 
+		global WXbatteryVoltage, WXbatteryCurrent, WXloadCurrent, WXsolarPanelVoltage, WXsolarPanelCurrent
+		global WXbatteryPower, WXsolarPower, WXloadPower, WXbatteryCharge
+		
                 oldblock1 = block1
                 oldblock2 = block2
 
@@ -1234,6 +1237,22 @@ def sampleSunAirPlus():
 		print "----------------- "
 		print " SunAirPlus Not Present" 
 		print "----------------- "
+		
+		if (config.SolarPower_Mode):
+
+		print " WXLink Solar data used for Blynx Solar section"
+		print "----------------- "
+
+		state.batteryVoltage = WXbatteryVoltage 
+   		state.batteryCurrent = WXbatteryCurrent
+   		state.solarVoltage = WXsolarPanelVoltage
+       		state.solarCurrent = WXsolarPanelCurrent
+#  		state.loadVoltage = WXloadVoltage		# Not used in current version
+   		state.loadCurrent = WXloadCurrent
+       		state.batteryPower = WXbatteryPower
+   		state.solarPower = WXsolarPower
+   		state.loadPower = WXloadPower
+       		state.batteryCharge = WXbatteryCharge	
 
 def sampleAndDisplay():
         
